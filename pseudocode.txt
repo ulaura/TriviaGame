@@ -1,0 +1,108 @@
+Advanced Option
+===============
+
+var remainingTime = 30 seconds;
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var unanswered = 0;
+var questionOne ... questionEight = See Notes Below
+
+
+--------------------------------------------------------
+For variales questionOne through questionEight
+
+Each question can be an object with property:value pairs.
+
+The first property is "question". Its value is the actual question.
+The second property is "choices". Its value is an array of the actual possible choices.
+
+The third property is "correct". Its value is the actual correct answer. 
+
+So questionOne = {
+	question: "What is generally considered the start of the work week in the United States?",
+	choices: ["Sunday", "Monday", "Friday", "Saturday"]
+	correct: "Monday"
+}
+
+To show the question in the game, print to HTML questionOne.question.
+
+To show the choices, print to HTML
+questionOne.choices.
+
+During Situation 1 and 2 below...
+When game function is looking for the correct answer,
+User's click can be compared to questionOne.correct. 
+If User's click matches questionOne.correct, User gets the question right. 
+If they don't match, User gets the question wrong. 
+---------------------------------------------------------
+
+
+
+
+
+
+Show Screen with Start Button.
+Clicking start button:
+	Function to start the game.
+
+theGame() function:
+	> Change screen to presenting question and choices (questionOne.question and questionOne.choices).
+	> Present remainingTime.
+	> Reduce remainingTime, one second at a time.
+	
+	
+
+	Situation One: User Anwers the Question Correctly
+	-------------------------------------------------
+	If User clicks correct answer:
+		> Pause remainingTime;
+		> Increase correctAnswers by 1;
+		> Change questions to screen celebrating User for choosing the correct answer. Hold this screen for a few seconds;
+		> Change to next question and choices;
+		> Reset remainingTime to 30 seconds;
+			
+
+	Situation Two: User Answers the Question Incorrectly
+	----------------------------------------------------
+	If User clicks incorrect answer:
+		> Pause remainingTime;
+		> Increase incorrectAnswers by 1;
+		> Change questions to screen informing User they are incorrect and show the correct answer. Hold this screen for a few seconds;
+		> Change to next question and choices;
+		> Reset remainingTime to 30 seconds;
+			
+
+	Situation Three: Time Runs Out Before User Answers 
+	--------------------------------------------------
+	If remainingTime === 0:
+		> Increase unaswered by 1;
+		> Change questions to screen informing User they are out of time and show the correct anwer. Hold this screen for a few seconds;
+		> Change to next question and choices;
+		> Reset remainingTime to 30 seconds;
+
+
+	Situation Four: When Game Ends
+	------------------------------
+	When Questions run out:
+		> Pause remainingTime;
+		> Change questions to results.
+		> Results shows totals for correctAnswers, incorrectAnwers, and unanswered.
+		> Ask if User wants to start over. This is clickable. 
+
+
+	Situation Five: Restart the Game Without Reloading
+	--------------------------------------------------
+	User clicks "Start Over?":
+		> Run Reset everything funtion.
+		> run theGame() to start at the beginning;
+
+
+> function resetEverything():
+	> correctAnswers = 0;
+	> incorrectAnswers = 0;
+	> unaswered = 0;
+
+
+
+
+
