@@ -22,19 +22,13 @@ console.log(questionTwo.question);   //test
 console.log(questionTwo.choices[3]); //test
 
 
-$(document).ready(function () {
+$("p").remove();
+$(".main-section").append($("<button>"));
+$("button").attr("type", "start-button");
+$("button").html("Click to start game!");
 
-
-
-
-
-
-
-
-
-
-
-
+$("button").on("click", function theGame() {
+	alert("TEST"); 
 
 
 
@@ -44,4 +38,24 @@ $(document).ready(function () {
 
 
 });
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
