@@ -33,23 +33,137 @@ $("button").on("click", function theGame() {
 	$("button").hide(); //hide the start button
 
 
-	$("#countdown").html(remainingTime + " seconds");
-	$("#question").html(questionOne.question);
-	$("#option-a").html(questionOne.choices[0]);
-	$("#option-b").html(questionOne.choices[1]);
-	$("#option-c").html(questionOne.choices[2]);
-	$("#option-d").html(questionOne.choices[3]);
+	firstQuestion();
+
+	function firstQuestion() {
+		$("#countdown").html(remainingTime + " seconds");
+		$("#question").html(questionOne.question);
+		$("#option-a").html(questionOne.choices[0]);
+		$("#option-b").html(questionOne.choices[1]);
+		$("#option-c").html(questionOne.choices[2]);
+		$("#option-d").html(questionOne.choices[3]);
+
+		
+		//checks to see if clicked option presented matches questionOne.correct.
+		$("span").on("click", function(event) {
+			if (($(event.target).text()) == questionOne.correct) {
+				alert("You are correct!");
+				secondQuestion();
+			} else {
+				alert("YOU ARE WRONG!");
+				secondQuestion();
+			}
+
+		});
+
+	}
 
 	
-	//checks to see if clicked option presented matches questionOne.correct.
-	$("span").on("click", function(event) {
-		if (($(event.target).text()) == questionOne.correct) {
-			alert("You are correct!");
-		} else {
-			alert("YOU ARE WRONG!");
-		}
 
-	});
+	function secondQuestion() {
+		$("#countdown").html(remainingTime + " seconds");
+		$("#question").html(questionTwo.question);
+		$("#option-a").html(questionTwo.choices[0]);
+		$("#option-b").html(questionTwo.choices[1]);
+		$("#option-c").html(questionTwo.choices[2]);
+		$("#option-d").html(questionTwo.choices[3]);
+
+
+		$("span").on("click", function(event) {
+			if (($(event.target).text()) == questionTwo.correct) {
+				alert("You are correct!");
+				//thirdQuestion();
+				result();
+			} else {
+				alert("YOU ARE WRONG!");
+				//thirdQuestion();
+				result();
+			}
+
+		});
+
+	}
+
+/*
+	function thirdQuestion() {
+		$("#countdown").html(remainingTime + " seconds");
+		$("#question").html(questionOne.question);
+		$("#option-a").html(questionOne.choices[0]);
+		$("#option-b").html(questionOne.choices[1]);
+		$("#option-c").html(questionOne.choices[2]);
+		$("#option-d").html(questionOne.choices[3]);
+
+		
+		//checks to see if clicked option presented matches questionOne.correct.
+		$("span").on("click", function(event) {
+			if (($(event.target).text()) == questionOne.correct) {
+				alert("You are correct!");
+				fourthQuestion();
+			} else {
+				alert("YOU ARE WRONG!");
+				fourthQuestion();
+			}
+
+		});
+
+	}
+
+	function fourthQuestion() {
+		$("#countdown").html(remainingTime + " seconds");
+		$("#question").html(questionOne.question);
+		$("#option-a").html(questionOne.choices[0]);
+		$("#option-b").html(questionOne.choices[1]);
+		$("#option-c").html(questionOne.choices[2]);
+		$("#option-d").html(questionOne.choices[3]);
+
+		
+		//checks to see if clicked option presented matches questionOne.correct.
+		$("span").on("click", function(event) {
+			if (($(event.target).text()) == questionOne.correct) {
+				alert("You are correct!");
+				fifthQuestion();
+			} else {
+				alert("YOU ARE WRONG!");
+				fifthQuestion();
+			}
+
+		});
+
+	}
+
+	function fifthQuestion() {
+		$("#countdown").html(remainingTime + " seconds");
+		$("#question").html(questionOne.question);
+		$("#option-a").html(questionOne.choices[0]);
+		$("#option-b").html(questionOne.choices[1]);
+		$("#option-c").html(questionOne.choices[2]);
+		$("#option-d").html(questionOne.choices[3]);
+
+		
+		//checks to see if clicked option presented matches questionOne.correct.
+		$("span").on("click", function(event) {
+			if (($(event.target).text()) == questionOne.correct) {
+				alert("You are correct!");
+				result();
+			} else {
+				alert("YOU ARE WRONG!");
+				result();
+			}
+
+		});
+
+	}
+*/
+	function result() {
+		$("#questions").hide();
+		$("#choices").hide();
+
+		$(".main-section").html("<p>Number Correct: " + correctAnswers + "</p>");
+		$(".main-section").html("<p>Number Incorrect: " + incorrectAnswers + "</p>");
+		$(".main-section").html("<p>Unanswered Questions: " + unanswered + "</p>");
+
+
+	}
 
 
 
