@@ -18,6 +18,9 @@ var questionTwo = {
 	correct: "July"
 };
 
+//created an array of correct answers so I can use this in the check correct answer loop below
+var listCorrectAnswers = [questionOne.correct, questionTwo.correct];
+
 console.log(questionTwo.question);   //test
 console.log(questionTwo.choices[3]); //test
 
@@ -35,6 +38,7 @@ $("button").on("click", function theGame() {
 
 	firstQuestion();
 
+
 	function firstQuestion() {
 		$("#countdown").html(remainingTime + " seconds");
 		$("#question").html(questionOne.question);
@@ -45,18 +49,27 @@ $("button").on("click", function theGame() {
 
 		
 		//checks to see if clicked option presented matches questionOne.correct.
+		//problem: running questionTwo brings up the question, but then the clicked
+		//answer gets compared to both questionOne.correct AND questionTwo.correct. 
+
+		//possible solution: turn this section into its own for-loop and iterate the 
+		//"questionOne.correct" part so this only gets checked once per question. 
+
 		$("span").on("click", function(event) {
 			if (($(event.target).text()) == questionOne.correct) {
 				alert("You are correct!");
-				secondQuestion();
+				
+				
 			} else {
 				alert("YOU ARE WRONG!");
-				secondQuestion();
+				
 			}
+
 
 		});
 
-	}
+
+	};
 
 	
 
@@ -73,11 +86,11 @@ $("button").on("click", function theGame() {
 			if (($(event.target).text()) == questionTwo.correct) {
 				alert("You are correct!");
 				//thirdQuestion();
-				result();
+				
 			} else {
 				alert("YOU ARE WRONG!");
 				//thirdQuestion();
-				result();
+				
 			}
 
 		});
@@ -155,12 +168,12 @@ $("button").on("click", function theGame() {
 	}
 */
 	function result() {
-		$("#questions").hide();
+		$("#question").hide();
 		$("#choices").hide();
 
-		$(".main-section").html("<p>Number Correct: " + correctAnswers + "</p>");
-		$(".main-section").html("<p>Number Incorrect: " + incorrectAnswers + "</p>");
-		$(".main-section").html("<p>Unanswered Questions: " + unanswered + "</p>");
+		$(".main-section").append("<p>Number Correct: " + correctAnswers + "</p>");
+		$(".main-section").append("<p>Number Incorrect: " + incorrectAnswers + "</p>");
+		$(".main-section").append("<p>Unanswered Questions: " + unanswered + "</p>");
 
 
 	}
