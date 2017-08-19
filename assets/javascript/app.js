@@ -22,15 +22,34 @@ console.log(questionTwo.question);   //test
 console.log(questionTwo.choices[3]); //test
 
 
-$("p").remove();
+$("p").hide();
 $(".main-section").append($("<button>"));
 $("button").attr("type", "start-button");
 $("button").html("Click to start game!");
 
 $("button").on("click", function theGame() {
-	alert("TEST"); 
+	//alert("TEST"); 
+	$("p").show(); //return p tags
+	$("button").hide(); //hide the start button
 
 
+	$("#countdown").html(remainingTime + " seconds");
+	$("#question").html(questionOne.question);
+	$("#option-a").html(questionOne.choices[0]);
+	$("#option-b").html(questionOne.choices[1]);
+	$("#option-c").html(questionOne.choices[2]);
+	$("#option-d").html(questionOne.choices[3]);
+
+	
+	//checks to see if clicked option presented matches questionOne.correct.
+	$("span").on("click", function(event) {
+		if (($(event.target).text()) == questionOne.correct) {
+			alert("You are correct!");
+		} else {
+			alert("YOU ARE WRONG!");
+		}
+
+	});
 
 
 
