@@ -5,8 +5,8 @@ var incorrectAnswers = 0;
 var unanswered = 0;
 
 
-//The questions for now.
-//I will add more later when everything comes together.
+//Test questions for now. 
+//I will add more later when I can get the logic to work. 
 var theQuestions = [
 	{
 	question: "What is generally considered the start of the work week in the United States?",
